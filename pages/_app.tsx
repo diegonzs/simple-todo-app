@@ -1,15 +1,15 @@
 import type { AppProps } from 'next/app'
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import '../styles/globals.css'
+import 'tailwindcss/tailwind.css'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const queryClient = new QueryClient()
   return (
-    <div>
-      <Header />
+    <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      <Footer />
-    </div>
+    </QueryClientProvider>
   )
 }
 export default MyApp
